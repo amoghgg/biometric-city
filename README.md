@@ -1,68 +1,65 @@
 # Biometric City
 
-A real-time 3D city visualization that displays live biometric and urban data for NYC and Mumbai. Built with Three.js on the frontend and a FastAPI WebSocket backend.
+Real-time 3D city visualization for NYC and Mumbai, overlaid with live biometric and urban data. Buildings pulse with activity. Data streams in over WebSockets. Built as an exploration of what it looks like when a city becomes observable.
+
+![NYC Preview](nyc_v2_preview.png)
+
+## What it does
+
+A Three.js scene renders a procedurally structured city. A FastAPI backend pushes live data over WebSockets — biometric signals, urban activity metrics, crowd density approximations — and the city reacts in real time. District-level data updates animate across the skyline.
+
+Two cities are modeled: New York and Mumbai. Blender scripts are included for the 3D asset generation so the scenes can be extended or rebuilt.
 
 ## Stack
 
-- **Frontend** — Three.js + Vite + GSAP
-- **Backend** — FastAPI + WebSockets + APScheduler
-- **3D Modeling** — Blender (scripts included)
+| | |
+|---|---|
+| Frontend | Three.js, Vite, GSAP |
+| Backend | FastAPI, WebSockets, APScheduler |
+| 3D Modeling | Blender (Python scripts) |
 
 ## Project Structure
 
 ```
 biometric-city/
-├── backend/          # FastAPI WebSocket server
-│   ├── main.py
+├── backend/
+│   ├── main.py               # FastAPI WebSocket server
 │   ├── requirements.txt
-│   └── data/         # City data aggregator
-├── frontend/         # Three.js Vite app
+│   └── data/                 # City data aggregation layer
+├── frontend/
 │   ├── src/
 │   ├── index.html
 │   └── package.json
-├── blender_city_scene.py       # Base city scene script
+├── blender_city_scene.py       # Base city scene
 ├── blender_nyc_landmarks.py    # NYC landmarks
-├── blender_nyc_detailed.py     # NYC detailed version
+├── blender_nyc_detailed.py     # NYC detailed pass
 ├── blender_nyc_v2.py           # NYC v2
-├── blender_mumbai_landmarks.py # Mumbai landmarks
-└── start.sh                    # Starts both servers
+├── blender_mumbai_landmarks.py # Mumbai
+└── start.sh
 ```
 
-## 3D Assets
+## Running it
 
-The `frontend/public/models/` directory contains FBX models and textures (~23MB) used for city props and structures. These are not tracked in git due to size. Place your FBX assets there before running the frontend.
-
-## Blender Files
-
-The `.blend` files (`nyc_v2.blend`, etc.) are not tracked in git due to size. Run the corresponding Python scripts inside Blender's scripting panel to regenerate them.
-
-## Preview
-
-| NYC | Mumbai |
-|-----|--------|
-| ![NYC](nyc_v2_preview.png) | ![Mumbai](mumbai_preview.png) |
-
-## Getting Started
-
-**Backend**
 ```bash
+# Backend
 cd backend
-python -m venv venv
-source venv/bin/activate
 pip install -r requirements.txt
 uvicorn main:app --reload
-```
 
-**Frontend**
-```bash
+# Frontend (separate terminal)
 cd frontend
 npm install
 npm run dev
 ```
 
-**Or run both at once:**
+Or just:
+
 ```bash
 ./start.sh
 ```
 
-App runs at `http://localhost:5173`, backend at `http://localhost:8000`.
+## Previews
+
+| NYC | NYC Detailed | Mumbai |
+|---|---|---|
+| ![](nyc_preview.png) | ![](nyc_detailed_preview.png) | ![](mumbai_preview.png) |
