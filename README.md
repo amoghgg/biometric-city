@@ -2,7 +2,7 @@
 
 Real-time 3D city visualization for NYC and Mumbai, overlaid with live biometric and urban data. Buildings pulse with activity. Data streams in over WebSockets. Built as an exploration of what it looks like when a city becomes observable.
 
-![NYC Preview](nyc_v2_preview.png)
+![NYC Preview](docs/nyc_v2_preview.png)
 
 ## What it does
 
@@ -62,4 +62,4 @@ Or just:
 
 | NYC | NYC Detailed | Mumbai |
 |---|---|---|
-| ![](nyc_preview.png) | ![](nyc_detailed_preview.png) | ![](mumbai_preview.png) |
+| ![](docs/nyc_preview.png) | ![](docs/nyc_detailed_preview.png) | ![](docs/mumbai_preview.png) |
